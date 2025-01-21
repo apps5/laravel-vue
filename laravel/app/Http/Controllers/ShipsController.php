@@ -41,7 +41,6 @@ class ShipsController extends Controller
 
     public function update(Request $request, $id)
     {
-Log::info($request);
       $ship = Ships::with(['cabinCategories', 'shipsGallery'])->find($id); 
       if (!$ship) {
         $ship = new Ships();
@@ -70,8 +69,6 @@ Log::info($request);
         }
       }
 
-Log::info($ship->getAttributes());
-Log::info($ship->getRelations());
       $ship->save();
 
       return response()->json([
